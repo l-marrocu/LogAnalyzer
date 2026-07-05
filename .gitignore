@@ -1,0 +1,35 @@
+# --- Virtual environment ---
+.venv/
+venv/
+
+# --- Cache Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# --- Report generati (contenuto locale, non da versionare) ---
+Reports/*
+!Reports/.gitkeep
+
+# --- Cartelle generate da PyInstaller ---
+build/
+dist/
+
+# --- File temporanei ---
+*.tmp
+*.temp
+
+# --- File di sistema Windows ---
+Thumbs.db
+desktop.ini
+
+# --- Editor ---
+.vscode/
+.idea/
+*.swp
+
+# --- Cartelle di test locali ---
+test_logs/
+sample_logs/

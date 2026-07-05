@@ -1,0 +1,19 @@
+# Librerie necessarie per LogAnalyzer
+# Installa con: pip install -r requirements.txt (dentro il tuo .venv attivo)
+
+# Interfaccia grafica moderna (basata su tkinter, incluso di default
+# in Python su Windows — non serve installarlo separatamente).
+customtkinter>=5.2.0
+
+# Generazione del report PDF (puro Python, nessuna dipendenza di sistema).
+fpdf2>=2.7.0
+
+# Conversione Markdown in HTML per la formattazione del PDF.
+mistune>=3.0.0
+
+# Generazione del grafico timeline incorporato nel PDF.
+matplotlib>=3.7.0
+
+# Necessario SOLO se vuoi costruire l'eseguibile .exe (vedi README).
+# Non serve per il normale utilizzo del programma.
+pyinstaller>=6.0.0

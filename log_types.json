@@ -1,0 +1,51 @@
+{
+  "_commento": "File di configurazione dei tipi di log supportati da LogAnalyzer.",
+  "_istruzioni": "Per aggiungere un nuovo tipo di log, aggiungi un nuovo oggetto alla lista 'tipi' seguendo la stessa struttura degli altri. Non modificare il codice Python.",
+  "dimensione_massima_mb": 10,
+  "tipi": [
+    {
+      "id": "python",
+      "nome": "Python Application Log",
+      "descrizione": "Log generati dalla libreria logging standard di Python (formato: data ora livello messaggio)",
+      "pattern": "(?P<timestamp>\\d{4}-\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2}(?:[,.]\\d+)?)\\s+\\[?(?P<livello>DEBUG|INFO|WARNING|ERROR|CRITICAL)\\]?\\s+(?P<messaggio>.+)",
+      "formato_timestamp": "%Y-%m-%d %H:%M:%S.%f",
+      "livelli_errore": ["ERROR", "CRITICAL"],
+      "livelli_warning": ["WARNING"],
+      "livelli_info": ["INFO", "DEBUG"],
+      "encoding": "utf-8"
+    },
+    {
+      "id": "apache_access",
+      "nome": "Apache / Nginx Access Log",
+      "descrizione": "Log di accesso HTTP (formato Combined Log Format standard)",
+      "pattern": "(?P<ip>[\\d.]+)\\s+\\S+\\s+\\S+\\s+\\[(?P<timestamp>[^\\]]+)\\]\\s+\"(?P<metodo>\\w+)\\s+(?P<url>\\S+)\\s+\\S+\"\\s+(?P<livello>\\d{3})\\s+(?P<messaggio>.+)",
+      "formato_timestamp": "%d/%b/%Y:%H:%M:%S %z",
+      "livelli_errore": ["500", "502", "503", "504"],
+      "livelli_warning": ["400", "403", "404", "429"],
+      "livelli_info": ["200", "201", "204", "301", "302"],
+      "encoding": "utf-8"
+    },
+    {
+      "id": "apache_error",
+      "nome": "Apache / Nginx Error Log",
+      "descrizione": "Log degli errori del server web Apache o Nginx",
+      "pattern": "\\[(?P<timestamp>[^\\]]+)\\]\\s+\\[(?P<livello>debug|info|notice|warn|error|crit|alert|emerg)\\]\\s+(?P<messaggio>.+)",
+      "formato_timestamp": "%a %b %d %H:%M:%S.%f %Y",
+      "livelli_errore": ["error", "crit", "alert", "emerg"],
+      "livelli_warning": ["warn"],
+      "livelli_info": ["info", "notice", "debug"],
+      "encoding": "utf-8"
+    },
+    {
+      "id": "generico",
+      "nome": "Log Generico (Fallback)",
+      "descrizione": "Rileva righe con parole chiave indipendentemente dal formato. Usa questo tipo se non conosci il formato esatto del log.",
+      "pattern": "(?P<timestamp>(?:\\d{4}[-/]\\d{2}[-/]\\d{2}[T\\s]\\d{2}:\\d{2}:\\d{2}(?:[.,]\\d+)?(?:Z|[+-]\\d{2}:\\d{2})?)|(?:\\w{3}\\s+\\d{1,2}\\s+\\d{2}:\\d{2}:\\d{2}))?\\s*(?P<livello>DEBUG|INFO|NOTICE|WARNING|WARN|ERROR|CRITICAL|FATAL|SEVERE|EMERG|ALERT|CRIT)?\\s*(?P<messaggio>.+)",
+      "formato_timestamp": null,
+      "livelli_errore": ["ERROR", "CRITICAL", "FATAL", "SEVERE", "EMERG", "ALERT", "CRIT"],
+      "livelli_warning": ["WARNING", "WARN", "NOTICE"],
+      "livelli_info": ["INFO", "DEBUG"],
+      "encoding": "utf-8"
+    }
+  ]
+}
